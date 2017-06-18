@@ -7,13 +7,13 @@
 //
 
 import UIKit
-
+//font種類参考URL http://iphone-tora.sakura.ne.jp/uifont.html
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
 
     var addBtn: UIBarButtonItem!
     
     
-    private let myItems: NSArray = ["パターン1", "パターン2", "パターン3","その他"]
+    private let myItems: NSArray = ["パターン1(スクロールさせるだけ)", "パターン2(かぶるようならその分被らないようにスクロールする)", "パターン3(キーボードの分viewを縮める(アニメーション入り))","その他"]
     private var myTableView: UITableView!
 
     override func viewDidLoad() {
@@ -74,6 +74,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         // 再利用するCellを取得する.
         let cell = tableView.dequeueReusableCell(withIdentifier: "MyCell", for: indexPath as IndexPath)
+        cell.textLabel?.font = UIFont(name: "ArialHebrew", size: 10)
+
         
         // Cellに値を設定する.
         cell.textLabel!.text = "\(myItems[indexPath.row])"
