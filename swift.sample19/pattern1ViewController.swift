@@ -13,6 +13,20 @@ class pattern1ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.orange
+        
+        let mainViewFrame = UIScreen.main.bounds
+        
+        let scrollViewsample = UIScrollView()
+        scrollViewsample.frame = mainViewFrame
+         scrollViewsample.contentSize = CGSize(width:mainViewFrame.size.width , height:mainViewFrame.height * 2)
+        let sampletextFile = UITextField()
+        sampletextFile.text = "パターン1"
+        sampletextFile.borderStyle = UITextBorderStyle.roundedRect
+        sampletextFile.frame.size.width = mainViewFrame.size.width/2
+        let rec = CGRect(x: mainViewFrame.midX - sampletextFile.frame.size.width/2, y: 500, width:mainViewFrame.size.width/2 , height:  40.0)
+        sampletextFile.frame = rec
+        self.view.addSubview(scrollViewsample)
+        scrollViewsample.addSubview(sampletextFile)
 
         // Do any additional setup after loading the view.
     }
