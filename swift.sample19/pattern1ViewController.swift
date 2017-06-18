@@ -10,6 +10,7 @@ import UIKit
 
 class pattern1ViewController: UIViewController,UITextFieldDelegate {
 
+    let sampletextFile = UITextField()
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.orange
@@ -19,13 +20,19 @@ class pattern1ViewController: UIViewController,UITextFieldDelegate {
         let scrollViewsample = UIScrollView()
         scrollViewsample.frame = mainViewFrame
          scrollViewsample.contentSize = CGSize(width:mainViewFrame.size.width , height:mainViewFrame.height * 2)
-        let sampletextFile = UITextField()
+        
         sampletextFile.text = "パターン1"
         sampletextFile.delegate = self
         sampletextFile.borderStyle = UITextBorderStyle.roundedRect
         sampletextFile.frame.size.width = mainViewFrame.size.width/2
         let rec = CGRect(x: mainViewFrame.midX - sampletextFile.frame.size.width/2, y: 500, width:mainViewFrame.size.width/2 , height:  40.0)
         sampletextFile.frame = rec
+        
+        let tapGesture:UITapGestureRecognizer = UITapGestureRecognizer(
+            target: self,
+            action: #selector(pattern1ViewController.tap(_:)))
+        self.view.addGestureRecognizer(tapGesture)
+
         self.view.addSubview(scrollViewsample)
         scrollViewsample.addSubview(sampletextFile)
 
@@ -42,6 +49,11 @@ class pattern1ViewController: UIViewController,UITextFieldDelegate {
         textField.resignFirstResponder()
         
         return true
+    }
+    
+    func tap(_ sender: UITapGestureRecognizer){
+            sampletextFile.resignFirstResponder()
+//        　　self.view.endEditing(true)
     }
 
 

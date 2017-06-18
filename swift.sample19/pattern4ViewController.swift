@@ -14,14 +14,13 @@ class pattern4ViewController: UIViewController,UITextFieldDelegate {
     var txtActiveField = UITextField()
     var testConstraint:NSLayoutConstraint! = nil
     var allY:CGFloat = 0.0
+    let sampletextFile = UITextField()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        
         self.view.backgroundColor = UIColor.black
         let mainViewFrame = UIScreen.main.bounds
-        let sampletextFile = UITextField()
         sampletextFile.translatesAutoresizingMaskIntoConstraints = false
         sampletextFile.delegate = self
         sampletextFile.text = "パターン4"
@@ -29,6 +28,12 @@ class pattern4ViewController: UIViewController,UITextFieldDelegate {
         sampletextFile.frame.size.width = mainViewFrame.size.width/2
         let rec = CGRect(x: mainViewFrame.midX - sampletextFile.frame.size.width/2, y: 500, width:mainViewFrame.size.width/2 , height:  40.0)
         sampletextFile.frame = rec
+        
+        let tapGesture:UITapGestureRecognizer = UITapGestureRecognizer(
+            target: self,
+            action: #selector(pattern4ViewController.tap(_:)))
+        self.view.addGestureRecognizer(tapGesture)
+        
         self.view.addSubview(sampletextFile)
         
         
@@ -67,6 +72,12 @@ class pattern4ViewController: UIViewController,UITextFieldDelegate {
         
         return true
     }
+    
+    func tap(_ sender: UITapGestureRecognizer){
+        sampletextFile.resignFirstResponder()
+        //        　　self.view.endEditing(true)
+    }
+
     
     //UITextFieldが編集された直後に呼ばれる.
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {

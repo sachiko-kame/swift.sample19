@@ -10,17 +10,23 @@ import UIKit
 //参考　http://hacknote.jp/archives/7958/
 class pattern3ViewController: UIViewController,UITextFieldDelegate {
     
+    let sampletextFile = UITextField()
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.view.backgroundColor = UIColor.yellow
         let mainViewFrame = UIScreen.main.bounds
-        let sampletextFile = UITextField()
         sampletextFile.delegate = self
         sampletextFile.text = "パターン3"
         sampletextFile.borderStyle = UITextBorderStyle.roundedRect
         sampletextFile.frame.size.width = mainViewFrame.size.width/2
         let rec = CGRect(x: mainViewFrame.midX - sampletextFile.frame.size.width/2, y: 500, width:mainViewFrame.size.width/2 , height:  40.0)
         sampletextFile.frame = rec
+        
+        let tapGesture:UITapGestureRecognizer = UITapGestureRecognizer(
+            target: self,
+            action: #selector(pattern3ViewController.tap(_:)))
+        self.view.addGestureRecognizer(tapGesture)
         self.view.addSubview(sampletextFile)
 
 
@@ -49,6 +55,12 @@ class pattern3ViewController: UIViewController,UITextFieldDelegate {
         
         return true
     }
+    
+    func tap(_ sender: UITapGestureRecognizer){
+        sampletextFile.resignFirstResponder()
+        //        　　self.view.endEditing(true)
+    }
+
     
     
     func handleKeyboardWillShowNotification(_ notification: Notification) {
