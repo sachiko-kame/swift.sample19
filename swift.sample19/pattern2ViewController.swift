@@ -22,7 +22,7 @@ class pattern2ViewController: UIViewController ,UITextFieldDelegate, UIScrollVie
         let mainViewFrame = UIScreen.main.bounds
         
         scrollViewsample.frame = mainViewFrame
-        scrollViewsample.contentSize = CGSize(width:mainViewFrame.size.width , height:mainViewFrame.height + 30)
+        scrollViewsample.contentSize = CGSize(width:mainViewFrame.size.width , height:mainViewFrame.height + 150)
         let sampletextFile = UITextField()
         sampletextFile.delegate = self
         sampletextFile.text = "パターン2"
@@ -75,8 +75,10 @@ class pattern2ViewController: UIViewController ,UITextFieldDelegate, UIScrollVie
         let keyboardScreenEndFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
         let myBoundSize: CGSize = UIScreen.main.bounds.size
         
+        let scrollvalue = scrollViewsample.contentOffset.y
+        
         //入力したテキストフィールドのy軸と高さと少し余白を足してテキストフィールドのマックスy値と少し余白のy軸をとる
-        let txtLimit = txtActiveField.frame.origin.y + txtActiveField.frame.height + 8.0
+        let txtLimit = txtActiveField.frame.origin.y + txtActiveField.frame.height + 8.0 + scrollvalue
         
         //現在のselfViewの高さから、キーボードの高さを引いて残りの幅の高さをみるy軸をみる
         let kbdLimit = myBoundSize.height - keyboardScreenEndFrame.size.height
