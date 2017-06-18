@@ -80,7 +80,8 @@ class pattern2ViewController: UIViewController ,UITextFieldDelegate, UIScrollVie
         scrollFormer = scrollViewsample.contentOffset.y
         
         //入力したテキストフィールドのy軸と高さと少し余白を足してテキストフィールドのマックスy値と少し余白のy軸をとる
-        let txtLimit = txtActiveField.frame.maxY + 8.0 - scrollvalue
+        let txtLimit = txtActiveField.frame.maxY + 8.0
+        let txtLimit1 = txtActiveField.frame.maxY + 8.0 - scrollvalue
         
         //現在のselfViewの高さから、キーボードの高さを引いて残りの幅の高さをみるy軸をみる
         let kbdLimit = myBoundSize.height - keyboardScreenEndFrame.size.height
@@ -90,7 +91,7 @@ class pattern2ViewController: UIViewController ,UITextFieldDelegate, UIScrollVie
         print("キーボードの上辺：(\(kbdLimit))")
         
         //キーボードよりテキストフィールドのy軸が大きかったらキーボードにかかっている状態。スクロールビューをその分移動させる。
-        if txtLimit >= kbdLimit {
+        if txtLimit1 >= kbdLimit {
             scrollViewsample.contentOffset.y = txtLimit - kbdLimit
         }
     }
