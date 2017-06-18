@@ -12,6 +12,7 @@ import UIKit
 class pattern2ViewController: UIViewController ,UITextFieldDelegate, UIScrollViewDelegate {
     
     var txtActiveField = UITextField()
+    var scrollFormer:CGFloat! = nil
     let scrollViewsample = UIScrollView()
 
 
@@ -76,6 +77,7 @@ class pattern2ViewController: UIViewController ,UITextFieldDelegate, UIScrollVie
         let myBoundSize: CGSize = UIScreen.main.bounds.size
         
         let scrollvalue = scrollViewsample.contentOffset.y
+        scrollFormer = scrollViewsample.contentOffset.y
         
         //入力したテキストフィールドのy軸と高さと少し余白を足してテキストフィールドのマックスy値と少し余白のy軸をとる
         let txtLimit = txtActiveField.frame.maxY + 8.0 - scrollvalue
@@ -97,7 +99,7 @@ class pattern2ViewController: UIViewController ,UITextFieldDelegate, UIScrollVie
         
         //スクロールを初期値に戻す　スクロールを全く行っていない状態に戻す。
         //コメントアウトしたので戻らない。
-//        scrollViewsample.contentOffset.y = 0
+        scrollViewsample.contentOffset.y = scrollFormer
     }
 
     /*
