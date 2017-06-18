@@ -13,7 +13,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var addBtn: UIBarButtonItem!
     
     
-    private let myItems: NSArray = ["パターン1(スクロールさせるだけ)", "パターン2(かぶるようならその分被らないようにスクロールする)", "パターン3(キーボードの分viewを縮める(アニメーション入り))","その他"]
+    private let myItems: NSArray = ["パターン1(スクロールさせるだけ)", "パターン2(かぶるようならその分被らないようにスクロールする)", "パターン3(キーボードの分viewを縮める(アニメーション入り))","パターン4(制約を利用したバージョン)","その他"]
     private var myTableView: UITableView!
 
     override func viewDidLoad() {
@@ -60,6 +60,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         case 2:
             let part3 = pattern3ViewController()
             self.navigationController?.pushViewController(part3, animated: true)
+        case 3:
+            let part3 = pattern4ViewController()
+            self.navigationController?.pushViewController(part3, animated: true)
+
         default:
             print("他")
         }
