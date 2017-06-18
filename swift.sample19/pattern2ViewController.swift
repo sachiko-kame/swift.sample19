@@ -98,8 +98,7 @@ class pattern2ViewController: UIViewController ,UITextFieldDelegate, UIScrollVie
     
     func handleKeyboardWillHideNotification(_ notification: Notification) {
         
-        //スクロールを初期値に戻す　スクロールを全く行っていない状態に戻す。
-        //コメントアウトしたので戻らない。
+        //スクロールしてある位置に戻す
         scrollViewsample.contentOffset.y = scrollFormer
     }
 
